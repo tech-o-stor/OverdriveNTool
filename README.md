@@ -1,8 +1,8 @@
-# OverdriveNTool 0.2.9.7 - tool for AMD Hawaii, Fiji, Polaris, Vega GPUs
+# OverdriveNTool 0.2.9 - tool for AMD Hawaii, Fiji, Polaris, Vega GPUs
 ------------------------------------------------------------------
 ![image](https://user-images.githubusercontent.com/122867950/212854094-d495459b-5b7d-4d1b-831e-ab7a0fb0df6d.png)
 
-[Download OverdriveNTool](https://github.com/tech-o-stor/OverdriveNTool/)
+[Download OverdriveNTool v0.9.2 for Windows/Linux/MacOS](https://github.com/tech-o-stor/OverdriveNTool/)
 --------------------------------------------------------------------------------------
 
 Hi all
