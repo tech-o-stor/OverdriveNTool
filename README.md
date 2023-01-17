@@ -25,7 +25,8 @@ I've made this because WattTool has stopped working since driver 17.7.2.
 ## How to use OverdriveNTool?
 
 ### Step 1 – Download the program
-Download the program from the official source SourceForge. Or download the release from Guru3d. 
+Download the program from the [official source GitHub](https://github.com/tech-o-stor/OverdriveNTool/)
+
 ### Step 2 – Run the program
 To run it, you must first extract the zip archive. Any folder on your hard drive will do. It is advisable to create a new one that will be used only for overclocking.
 Run the program and select the model of your video card in the upper field:
