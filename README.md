@@ -15,6 +15,24 @@ I've made this because WattTool has stopped working since driver 17.7.2.
 + To open Settings or SoftPowerPlayTable editor left click on top-left program icon, or right click on the titlebar.
 + To change "friendly name" first enable it in settings, than right click on the gpu list to open menu
 
+## Commands example:
+
+-ac0 GPU_P7=1200;800 Mem_P2=1000;850 Fan_Min=1080 Fan_Max=1700 Fan_Target=70 Fan_Acoustic=700 Power_Temp=90 Power_Target=50 -ac1 GPU_P#=1200;800 Mem_P#=1000;850
+
+-ac0 GPU_P7=1200;800;0 Mem_P3=1000;850 Fan_Min=1080 Fan_Max=1700
+
+-consoleonly -r5 -ac5 GPU_P#=1200;800 Mem_P#=1000;850 Fan_Min=1080 Fan_Max=1700 -ac4 Fan_Target=70 Fan_Acoustic=700 Power_Temp=90 Power_Target=50
+-ac* Power_Target=-1 GPU_P7=*;*;0
+
+-wait1000 -r0 -ac0 GPU_P7=1200;800 Mem_P1=700;850;0 Mem_P2=750;850;0 Mem_P3=800;850;0 Mem_P4=1000;850 Fan_Min=1080 Fan_Max=1700 Fan_Target=70 Fan_Acoustic=700 Power_Temp=90 Power_Target=50
+
+-ac0 Power_Target=50 -ac1 Power_Target=-50 -ac2 Fan_Max=1700 Fan_Min=1080 -ac1 Fan_Acoustic=700
+
+-getcurrent - prints current values for all supported GPUs in cmd console window.
+
+-t[gpu_id]
++ restart GPU with id=[gpu_id]. It's similar to devices manager enable/disable GPU. Useful for immediately apply registry changes done to AMD keys like SoftPowerPlay table. It requires admin rigths to work.
+
 ## Changelog:
 
 0.2.9 (14.06.2020)
