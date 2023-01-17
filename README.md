@@ -7,7 +7,13 @@ Hi all
 This application is for editing some parameters in the AMD OverdriveN API supported GPUs (currently 290, 290x, 380, 380x, 390, 390x, Fury, Fury X, Nano, 4xx, 5xx series, Vega 56, Vega 64) and Overdrive8 API supported GPUs (currently Radeon VII, RX 5000 series)
 I've made this because WattTool has stopped working since driver 17.7.2.
 
-
+## Additional info:
++ Workaround for bug in 17.7.2 drivers, when driver sometimes uses default voltages instead of user settings: use reset and re-apply profile.
++ It's possible to disable/enable each P state. To do this click on P0, P1.. etc. label. If P state is disabled it will not be used by GPU.
++ I2C currently supports: IR3567B (RX470, RX480, some RX5xx), up9505 (MSI RX5xx)
++ If you prefer to not touch fan settings it's possible to deactivate Fan section for each GPU. To do this press Ctrl + double click somewhere on the Fan box. It's saved per gpu_id, so GUI or commandline will not touch fan settings for such GPU.
++ To open Settings or SoftPowerPlayTable editor left click on top-left program icon, or right click on the titlebar.
++ To change "friendly name" first enable it in settings, than right click on the gpu list to open menu
 
 ## Changelog:
 
