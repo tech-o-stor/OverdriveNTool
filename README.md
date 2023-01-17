@@ -23,71 +23,26 @@ I've made this because WattTool has stopped working since driver 17.7.2.
 + GPU: AMD 290, 290x, 380, 380x, 390, 390x, Fury, Fury X, Nano, 4xx, 5xx series, Vega 56, Vega 64, Radeon VII, RX 5000 series
 + Driver: 17.7.2 or newer
 
-## Command Line:
--p[gpu_id]"Name"
-apply profile "Name" to GPU with id=[gpu_id]
--c[gpu_id]"Name"
-same as above, but with confirmation message that application started and everything went ok.
--r[gpu_id]
-reset GPU with id=[gpu_id]
-cp[gpu_id]"Name"
-compare current values of GPU with id=[gpu_id] with profile "Name", and eventually set this profile if not equal
-cm[gpu_id]"Name"
-compare current values of GPU with id=[gpu_id] with profile "Name", and eventually set this profile if not equal, with additional message if not equal found
-co[gpu_id]"Name"
-only compare current values of GPU with id=[gpu_id] with profile "Name", with message if not equal found
--consoleonly
-displays all messages (eg. errors) in cmd.exe console window, instead of gui messages. Only commands that are put after -consoleonly are affected, example:
-"OverdriveNTool.exe" -consoleonly -r0 -p0"1" -r1 -p1"1" -r2 -p2"2" - will affect all commands
-"OverdriveNTool.exe" -r0 -p0"1" -r1 -consoleonly -p1"1" -r2 -p2"2" - will affect -p1"1" -r2 -p2"2" commands only
--showgui
-when added to commandline normal GUI will be displayed after program finishes with all other commands
--wait[miliseconds]
-program waits specified time before parsing next command, useful if you want to add some delay for example on windows startup, can be used multiple times in one commandline
-example: OverdriveNTool.exe -wait3000 -r0 -wait500 -p0profile1
+## How to use OverdriveNTool?
 
-[gpu_id] - it's the first number taken from GPU description, for single video card it's 0
-"Name" - name of the profile that was saved ealier, must be quoted if has spaces inside
+### Step 1 – Download the program
+Download the program from the official source SourceForge. Or download the release from Guru3d. 
+### Step 2 – Run the program
+To run it, you must first extract the zip archive. Any folder on your hard drive will do. It is advisable to create a new one that will be used only for overclocking.
+Run the program and select the model of your video card in the upper field:
+![image](https://user-images.githubusercontent.com/122867950/212857251-165d7041-4ba0-434a-9366-f807ddb4a97e.png)
 
-### example:
-OverdriveNTool.exe -p0myProfile -p1"Profile 2"
-In this example application starts without gui, then sets "myProfile" to GPU with id=0 and "Profile 2" to GPU with id=1 and then exit.
+### Step 3 – Specify New Timing and Overclocking Settings
+We indicate new indicators to overclock the equipment.
+![image](https://user-images.githubusercontent.com/122867950/212857280-6331689a-e469-4645-a5be-865efda1a194.png)
 
-### commands can be used all together, for example:
-OverdriveNTool.exe -p0myProfile -r0 co1"Profile 1"
-
-On configs with more than 10 GPUs [gpu_id] must have 2 digits, for GPUs 0-9 leading 0 must be added, example: 00,01,02,03,04,05,06,07,08,09,10,11,12. Usage example: -p05"Name"
-
-It's possible to use * as [gpu_id], which means it affects all supported GPUs, example:
--r* -p*MyProfile -p2"Custom profile" cm*MyProfile
-
-## Advanced:
-
--ac[gpu_id] GPU_P[num]=[value];[value][;0] Mem_P[num]=[value];[value][;0] Fan_Min=[value] Fan_Max=[value] Fan_Target=[value] Fan_Acoustic=[value] Power_Temp=[value] Power_Target=[value]
--ac is similar to -p command, applies values but without using profiles. Format is identical to ini profile. All not specified values will remain untouched. Can be used with other commands (-consoleonly, * as [gpu_id], -r, -p... etc.)
-[num] - Pstate number, using # as [num] will apply to highest available Pstate for scpecified GPU
-[value] – value, for GPU and memory PState first value is clock (MHz), second is voltage (mV), third optional ;0 makes this Pstate disabled.
-Putting * as Memory or GPU value will skip applying this value, for example:
--ac0 GPU_P7=*;800 Mem_P3=1000;* (only applies GPU_P7 voltage=800mV and Memory P3 clock=1000MHZ)
--ac0 GPU_P4=*;*;0 (only disables GPU_P4 without changing it’s values)
-
-For I2C settings use –ac with Offset=[value] LLC=[value] PhaseGain=[value] CurrentScale=[value]
-I2C must be enabled and supported for specified GPU, otherwise it will not work. Offset value is multiplied by 6,25mV, so 10 = +62,5mV, -5 = -31,25mV
-Example:
--ac0 Offset=10 LLC=0
--ac0 Offset=-5 LLC=1 PhaseGain=000000 CurrentScale=60
-
-## Commands example:
-
--ac0 GPU_P7=1200;800 Mem_P2=1000;850 Fan_Min=1080 Fan_Max=1700 Fan_Target=70 Fan_Acoustic=700 Power_Temp=90 Power_Target=50 -ac1 GPU_P#=1200;800 Mem_P#=1000;850
--ac0 GPU_P7=1200;800;0 Mem_P3=1000;850 Fan_Min=1080 Fan_Max=1700
--consoleonly -r5 -ac5 GPU_P#=1200;800 Mem_P#=1000;850 Fan_Min=1080 Fan_Max=1700 -ac4 Fan_Target=70 Fan_Acoustic=700 Power_Temp=90 Power_Target=50
--ac* Power_Target=-1 GPU_P7=*;*;0
--wait1000 -r0 -ac0 GPU_P7=1200;800 Mem_P1=700;850;0 Mem_P2=750;850;0 Mem_P3=800;850;0 Mem_P4=1000;850 Fan_Min=1080 Fan_Max=1700 Fan_Target=70 Fan_Acoustic=700 Power_Temp=90 Power_Target=50
--ac0 Power_Target=50 -ac1 Power_Target=-50 -ac2 Fan_Max=1700 Fan_Min=1080 -ac1 Fan_Acoustic=700
--getcurrent - prints current values for all supported GPUs in cmd console window.
--t[gpu_id]
-+ restart GPU with id=[gpu_id]. It's similar to devices manager enable/disable GPU. Useful for immediately apply registry changes done to AMD keys like SoftPowerPlay table. It requires admin rigths to work.
+1 Choosing a video card.
+2 Kernel overclocking settings. On the left are Megahertz, on the right are Millivolts.
+3 Memory overclocking settings. On the left are Megahertz, on the right are Millivolts.
+4 Fan speed control.
+5 Saving settings in a profile.
+  + By clicking on the “Save” button you will save your Profile Settings in .ini.
+  + The “Apply” button is used to apply the set performance indicators.
 
 ## Changelog:
 
