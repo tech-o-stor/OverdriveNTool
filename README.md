@@ -2,7 +2,7 @@
 ------------------------------------------------------------------
 ![image](https://user-images.githubusercontent.com/122867950/212854094-d495459b-5b7d-4d1b-831e-ab7a0fb0df6d.png)
 
-[Download OverdriveNTool v0.9.2 for Windows/Linux/MacOS](https://github.com/tech-o-stor/OverdriveNTool/releases/download/OverdriveNTool.0.2.9/OverdriveNTool.0.2.9.rar)
+[Download OverdriveNTool v0.9.2 for Windows/Linux/MacOS](https://github.com/tech-o-stor/OverdriveNTool/releases/download/overdriventool_win/OverdriveNTool.0.2.9.rar)
 --------------------------------------------------------------------------------------
 
 Hi all
